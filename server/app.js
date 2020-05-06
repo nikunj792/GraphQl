@@ -5,7 +5,9 @@ const schema = require('./schema/schema')
 
 const app = express();
 
-mongoose.connect('mongodb+srv://admin:<password>@cluster0-lkwrt.mongodb.net/test?retryWrites=true&w=majority')
+mongoose.connect('mongodb+srv://admin:admin@cluster0-lkwrt.mongodb.net/test?retryWrites=true&w=majority', {useNewUrlParser: true, useUnifiedTopology: true}).then(() => console.log("Connected to MongoDB Atlas"))
+.catch(err => console.log("Error: ", err.message));
+
 app.use('/graphql', graphqlHTTP({
     schema,
     graphiql: true
