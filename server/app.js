@@ -1,9 +1,12 @@
 const express = require('express');
 const graphqlHTTP = require('express-graphql');
 const mongoose = require('mongoose');
+const cors = require('cors');
 const schema = require('./schema/schema')
 
 const app = express();
+
+app.use(cors())
 
 mongoose.connect('mongodb+srv://admin:admin@cluster0-lkwrt.mongodb.net/test?retryWrites=true&w=majority', {useNewUrlParser: true, useUnifiedTopology: true}).then(() => console.log("Connected to MongoDB Atlas"))
 .catch(err => console.log("Error: ", err.message));
