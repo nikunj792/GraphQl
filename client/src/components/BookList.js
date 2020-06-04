@@ -10,10 +10,9 @@ const getBookQuery = gql`{
 }`
 
 function BookList(props) {
-    const { data } = props;
-    console.log('1111', data)
+    const  data  = props;
   return (
-     data.books != 'undefined' ? <div id="App">
+     data && data.books != 'undefined' ? <div id="App">
       <ul id="book-list">
   {data.books && data.books.map((item, id)=>{return<li key={id}> {item.name}</li>})}
       </ul>
